@@ -1,14 +1,6 @@
-import React from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {StyleSheet, requireNativeComponent, NativeModules, View} from 'react-native';
 import VideoResizeMode from './VideoResizeMode.js';
-
-const {
-  Component,
-  StyleSheet,
-  requireNativeComponent,
-  PropTypes,
-  NativeModules,
-  View,
-} = React;
 
 const styles = StyleSheet.create({
   base: {
