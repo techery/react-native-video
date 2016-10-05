@@ -3,6 +3,7 @@ package com.brentvatne.react;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.util.Log;
+
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -144,7 +145,11 @@ public class ReactVideoView extends ScalableVideoView implements MediaPlayer.OnP
         event.putMap(ReactVideoViewManager.PROP_SRC, src);
         mEventEmitter.receiveEvent(getId(), Events.EVENT_LOAD_START.toString(), event);
 
-        prepareAsync(this);
+        try {
+            prepareAsync(this);
+        } catch (IllegalStateException exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void setResizeModeModifier(final ScalableType resizeMode) {
